@@ -2,4 +2,4 @@
 using ProjectDSA2.Algomonster.BinarySearch;
 using ProjectDSA2.Algomonster.Sorting;
 
-FindBoundary.Driver();
+FindFirstOccurrence.Driver();
