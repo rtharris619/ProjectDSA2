@@ -1,5 +1,3 @@
-﻿using ProjectDSA2.Algomonster;
-using ProjectDSA2.Algomonster.BinarySearch;
-using ProjectDSA2.Algomonster.Sorting;
+﻿using ProjectDSA2.Algomonster.BinarySearch;
 
-SquareRoot.Driver();
+PeakOfMountainArray.Driver();
