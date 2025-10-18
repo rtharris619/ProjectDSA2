@@ -4,72 +4,43 @@ namespace ProjectDSA2.Algomonster.DepthFirstSearch;
 
 public class BinaryTreeTraversal
 {
-    public class Node<T>
-    {
-        public T value;
-        public Node<T> left;
-        public Node<T> right;
-
-        public Node(T value)
-        {
-            this.value = value;
-        }
-
-        public Node(T value, Node<T> left, Node<T> right)
-        {
-            this.value = value;
-            this.left = left;
-            this.right = right;
-        }
-    }
-
-    public static void InOrderTraversal(Node<int> root)
+    public static void InOrderTraversal(BinaryTreeHelper.Node<int> root)
     {
         if (root != null)
         {
             InOrderTraversal(root.left);
-            Console.WriteLine(root.value);
+            Console.WriteLine(root.val);
             InOrderTraversal(root.right);
         }
     }
 
-    public static void PreOrderTraversal(Node<int> root)
+    public static void PreOrderTraversal(BinaryTreeHelper.Node<int> root)
     {
         if (root != null)
         {
-            Console.WriteLine(root.value);
+            Console.WriteLine(root.val);
             PreOrderTraversal(root.left);
             PreOrderTraversal(root.right);
         }
     }
 
-    public static void PostOrderTraversal(Node<int> root)
+    public static void PostOrderTraversal(BinaryTreeHelper.Node<int> root)
     {
         if (root != null)
         {
             PostOrderTraversal(root.left);
             PostOrderTraversal(root.right);
-            Console.WriteLine(root.value);
+            Console.WriteLine(root.val);
         }
     }
 
-    public static Node<T> BuildTree<T>(List<string> strs, ref int pos, Func<string, T> f)
-    {
-        string val = strs[pos];
-        pos++;
-        if (val == "x") return null;
-        Node<T> left = BuildTree(strs, ref pos, f);
-        Node<T> right = BuildTree(strs, ref pos, f);
-        return new Node<T>(f(val), left, right);
-    }
-
-    public static string InOrderAsciiTree<T>(Node<T> root)
+    public static string InOrderAsciiTree<T>(BinaryTreeHelper.Node<T> root)
     {        
         var sb = new StringBuilder();
         BuildAscii(root, "", true, sb);
         return sb.ToString();
 
-        static void BuildAscii<T>(Node<T> node, string prefix, bool isTail, StringBuilder sb)
+        static void BuildAscii<T>(BinaryTreeHelper.Node<T> node, string prefix, bool isTail, StringBuilder sb)
         {
             if (node == null) return;
 
@@ -80,7 +51,7 @@ public class BinaryTreeTraversal
 
             sb.Append(prefix)
                 .Append(isTail ? "└── " : "┌── ")
-                .AppendLine(node.value?.ToString());
+                .AppendLine(node.val?.ToString());
 
             if (node.left != null)
             {
@@ -94,7 +65,7 @@ public class BinaryTreeTraversal
         string str = "5 4 3 x x 8 x x 6 x x";
         List<string> strs = [.. str.Split([' '])];
         int pos = 0;
-        Node<int> root = BuildTree(strs, ref pos, int.Parse);
+        BinaryTreeHelper.Node<int> root = BinaryTreeHelper.BuildTree(strs, ref pos, int.Parse);
         //InOrderTraversal(root);
         Console.WriteLine(InOrderAsciiTree(root));
     }
