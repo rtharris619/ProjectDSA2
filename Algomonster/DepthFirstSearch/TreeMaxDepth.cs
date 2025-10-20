@@ -1,8 +1,10 @@
-﻿namespace ProjectDSA2.Algomonster.DepthFirstSearch;
+﻿using static ProjectDSA2.Algomonster.DepthFirstSearch.BinaryTreeHelper;
+
+namespace ProjectDSA2.Algomonster.DepthFirstSearch;
 
 public class TreeMaxDepth
 {    
-    public static int DFS(BinaryTreeHelper.Node<int> node)
+    public static int DFS(Node<int> node)
     {
         if (node == null)
             return 0;
@@ -10,7 +12,7 @@ public class TreeMaxDepth
         return 1 + Math.Max(DFS(node.left), DFS(node.right));
     }
     
-    public static int MaxDepth(BinaryTreeHelper.Node<int> root)
+    public static int MaxDepth(Node<int> root)
     {
         return root != null ? DFS(root) - 1 : 0;
     }
@@ -20,8 +22,8 @@ public class TreeMaxDepth
         string str = "5 4 3 x x 8 x x 6 x x";
         List<string> strs = [.. str.Split([' '])];
         int pos = 0;
-        BinaryTreeHelper.Node<int> root = BinaryTreeHelper.BuildTree(strs, ref pos, int.Parse);
-        BinaryTreeHelper.PreorderTraversal(root, "");
+        Node<int> root = BuildTree(strs, ref pos, int.Parse);
+        PreorderTraversal(root, "");
 
         Console.WriteLine(MaxDepth(root));
     }
