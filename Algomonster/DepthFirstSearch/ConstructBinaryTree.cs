@@ -7,27 +7,27 @@ public class ConstructBinaryTree
     public static Node<int>? BuildTreeRecursive(
         List<int> preorder, 
         Dictionary<int, int> inorderIndexMap, 
-        int preorderStart, 
-        int inorderStart, 
+        int preorderStartIndex, 
+        int inorderStartIndex, 
         int size)
     {
         if (size <= 0) return null;
 
-        int rootValue = preorder[preorderStart];
+        int rootValue = preorder[preorderStartIndex];
         int inorderIndex = inorderIndexMap.FirstOrDefault(x => x.Value == rootValue).Key;
-        int leftSize = inorderIndex - inorderStart;
+        int leftSize = inorderIndex - inorderStartIndex;
 
         var left = BuildTreeRecursive(
             preorder, 
             inorderIndexMap, 
-            preorderStart + 1, 
-            inorderStart, 
+            preorderStartIndex + 1, 
+            inorderStartIndex, 
             leftSize);
 
         var right = BuildTreeRecursive
             (preorder, 
             inorderIndexMap, 
-            preorderStart + 1 + leftSize, 
+            preorderStartIndex + 1 + leftSize, 
             inorderIndex + 1, 
             size - 1 - leftSize);
 
