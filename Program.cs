@@ -1,3 +1,4 @@
 ﻿using ProjectDSA2.Algomonster.Backtracking;
+using ProjectDSA2.Leetcode.Easy;
 
-CoinChange.Driver();
+TwoSum.Driver();
