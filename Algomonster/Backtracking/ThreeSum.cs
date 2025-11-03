@@ -67,6 +67,7 @@ public class ThreeSum
             {
                 triplet.Add(nums[i]);
                 triplet.AddRange(tuples);
+                triplet.Sort();
                 result.Add(triplet);
             }
         }
