@@ -2,4 +2,4 @@
 using ProjectDSA2.Algomonster.BreadthFirstSearch;
 using ProjectDSA2.Leetcode.Easy;
 
-ZigZagTraversal.Driver();
+BinaryTreeRightSideView.Driver();
