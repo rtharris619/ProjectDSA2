@@ -1,4 +1,4 @@
-﻿using static ProjectDSA2.Algomonster.DepthFirstSearch.BinaryTreeHelper;
+﻿using static ProjectDSA2.Helpers.BinaryTreeHelper;
 
 namespace ProjectDSA2.Algomonster.DepthFirstSearch;
 

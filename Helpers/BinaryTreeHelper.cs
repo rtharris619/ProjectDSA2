@@ -1,4 +1,4 @@
-﻿namespace ProjectDSA2.Algomonster.DepthFirstSearch;
+﻿namespace ProjectDSA2.Helpers;
 
 public class BinaryTreeHelper
 {
