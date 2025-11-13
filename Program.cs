@@ -3,4 +3,4 @@ using ProjectDSA2.Algomonster.BreadthFirstSearch;
 using ProjectDSA2.Algomonster.Graphs;
 using ProjectDSA2.Leetcode.Easy;
 
-TaskScheduling2.Driver();
+IsValidCourseSchedule2.Driver();
