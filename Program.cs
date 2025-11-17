@@ -4,4 +4,4 @@ using ProjectDSA2.Algomonster.Graphs;
 using ProjectDSA2.Algomonster.Heaps;
 using ProjectDSA2.Leetcode.Easy;
 
-HeapTop3.Driver();
+KClosestPoints.Driver();
