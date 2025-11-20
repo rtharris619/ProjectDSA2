@@ -5,4 +5,4 @@ using ProjectDSA2.Algomonster.Heaps;
 using ProjectDSA2.Leetcode.Easy;
 using ProjectDSA2.Misc;
 
-MedianOfStream2.Driver();
+AlienDictionary.Driver();
