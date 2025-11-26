@@ -1,6 +1,6 @@
 ﻿namespace ProjectDSA2.Helpers;
 
-public static class UnionFindHelper
+public class UnionFindHelper
 {
     public class UnionFind()
     {
