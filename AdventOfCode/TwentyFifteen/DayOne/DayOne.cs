@@ -44,7 +44,7 @@ public class DayOne
 
     public static void Driver()
     {
-        var input = AdventOfCodeHelper.DownloadPuzzleInput(2015, 1);
+        var input = AdventOfCodeHelper.DownloadPuzzleInputAsString(2015, 1);
         
         Part1(input);
         Part2(input);
