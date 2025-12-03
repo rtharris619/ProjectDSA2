@@ -36,7 +36,7 @@ public class PartTwo
             if (dialPosition == 0)
                 result++;
 
-            // gets mathematical modulo (not trucated toward zero in standard C#)
+            // gets mathematical modulo instead of programmatic modulo (because modulo truncates toward zero in C#)
             dialPosition = ((dialPosition % 100) + 100) % 100;
         }
 
