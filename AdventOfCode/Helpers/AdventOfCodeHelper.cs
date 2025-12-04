@@ -48,6 +48,15 @@ public class AdventOfCodeHelper
             return new List<string>();
         }
 
-        return split.ToList();
+        var result = new List<string>();
+        foreach (var line in split)
+        {
+            if (line.Trim() != string.Empty)
+            {
+                result.Add(line);
+            }
+        }
+
+        return result;
     }
 }
