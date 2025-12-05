@@ -45,18 +45,9 @@ public class AdventOfCodeHelper
 
         if (split.Length == 0)
         {
-            return new List<string>();
+            return [];
         }
 
-        var result = new List<string>();
-        foreach (var line in split)
-        {
-            if (line.Trim() != string.Empty)
-            {
-                result.Add(line);
-            }
-        }
-
-        return result;
+        return split.ToList();
     }
 }

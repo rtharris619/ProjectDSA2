@@ -37,6 +37,9 @@ public class PartOne
         var grid = new List<List<char>>();
         for (int i = 0; i < input.Count; i++)
         {
+            if (input[i].Trim() == string.Empty)
+                continue;
+
             var itemList = new List<char>();
             for (int j = 0; j < input[i].Length; j++)
             {
