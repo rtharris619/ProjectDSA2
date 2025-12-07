@@ -48,9 +48,9 @@ public class PartTwo
             }
         }
 
-        foreach (var ingredients in mergedFreshIngredients)
+        foreach (var (start, end) in mergedFreshIngredients)
         {
-            freshIngredientCount += (ingredients.end - ingredients.start) + 1;
+            freshIngredientCount += (end - start) + 1;
         }
 
         return freshIngredientCount;

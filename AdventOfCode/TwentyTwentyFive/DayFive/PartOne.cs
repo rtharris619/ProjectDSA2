@@ -47,62 +47,6 @@ public class PartOne
         return freshIngredientCount;
     }
 
-    private static int SolveOld(List<string> input)
-    {
-        int freshIngredientCount = 0;
-
-        List<(long start, long end)> freshIngredients = [];
-        List<long> availableIngredients = [];
-
-        bool ingredientToggle = false;
-        foreach (string item in input)
-        {
-            if (item.Trim() == string.Empty)
-            {
-                ingredientToggle = true;
-                continue; 
-            }
-
-            if (ingredientToggle)
-            {
-                long ingredient = long.Parse(item);
-                availableIngredients.Add(ingredient);
-            }
-            else
-            {
-                string[] range = item.Split('-');
-                long start = long.Parse(range[0]);
-                long end = long.Parse(range[1]);
-                freshIngredients.Add((start, end));
-            }
-        }
-
-        // sort by start
-        freshIngredients.Sort();
-
-        // merge by ranges
-        List<(long start, long end)> mergedFreshIngredients = [];
-        mergedFreshIngredients.Add(freshIngredients[0]);
-
-        for (int i = 1; i < freshIngredients.Count; i++)
-        {
-            var current = freshIngredients[i];
-            var lastIndex = mergedFreshIngredients.Count - 1;
-            var lastMerged = mergedFreshIngredients[lastIndex];
-
-            if (lastMerged.end >= current.start) // merge candidate
-            {
-                mergedFreshIngredients[lastIndex] = (lastMerged.start, Math.Max(lastMerged.end, current.end));
-            }
-            else
-            {
-                mergedFreshIngredients.Add((current.start, current.end));
-            }
-        }
-
-        return freshIngredientCount;
-    }
-
     private static void Tests()
     {
         List<string> input = new List<string>()
