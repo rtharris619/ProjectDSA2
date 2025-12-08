@@ -13,14 +13,14 @@ public class PartOne
 
         for (int col = 0; col < grid[0].Count; col++)
         {
-            string function = grid[grid.Count - 1][col];
+            string operation = grid[grid.Count - 1][col];
             long subTotal = 0;
-            if (function == "*")
+            if (operation == "*")
                 subTotal = 1;
 
             for (int row = 0; row < grid.Count - 1; row++)
             {
-                if (function == "+")
+                if (operation == "+")
                     subTotal += long.Parse(grid[row][col]);
                 else
                     subTotal *= long.Parse(grid[row][col]);
