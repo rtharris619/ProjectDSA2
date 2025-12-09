@@ -1,5 +1,4 @@
 ﻿using ProjectDSA2.AdventOfCode.Helpers;
-using static ProjectDSA2.Algomonster.Heaps.MergeKSortedLists;
 
 namespace ProjectDSA2.AdventOfCode.TwentyTwentyFive.DaySix;
 
@@ -51,6 +50,7 @@ public class PartTwo
             }
         }
 
+        // we still have a lingering total hanging around at the end
         if (total > 0)
             grandTotal += total;
 
