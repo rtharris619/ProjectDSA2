@@ -37,7 +37,7 @@ public class AdventOfCodeHelper
         return DownloadPuzzleInput(year, day);
     }
 
-    public static List<string> DownloadPuzzleInputAsList(int year, int day)
+    public static List<string> DownloadPuzzleInputAsList(int year, int day, bool trim = false)
     {
         string input = DownloadPuzzleInput(year, day);
 
@@ -46,6 +46,17 @@ public class AdventOfCodeHelper
         if (split.Length == 0)
         {
             return [];
+        }
+
+        if (trim)
+        {
+            var lines = new List<string>();
+            foreach (var line in split)
+            {
+                if (line.Trim() == string.Empty) continue;
+                lines.Add(line);
+            }
+            return lines;
         }
 
         return split.ToList();
