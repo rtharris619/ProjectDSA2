@@ -1,3 +1,3 @@
-﻿using ProjectDSA2.AdventOfCode.TwentyTwentyFive.DaySeven;
+﻿using ProjectDSA2.AdventOfCode.TwentyTwentyFive.DayEight;
 
-PartTwo.Driver();
+PartOne.Driver();
