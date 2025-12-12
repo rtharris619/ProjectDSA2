@@ -2,69 +2,70 @@
 
 namespace ProjectDSA2.AdventOfCode.TwentyTwentyFive.DayEight;
 
-public class PartOne
+public class PartOneV2
 {
 
     private static int Solve(List<string> input, int connections)
     {
         int result = 0;
 
-        // step 1: Append coords to the Min Heap
+        // step 1: Append coords to the Min Heap        
+        var points = new List<(int x, int y, int z)>(input.Count);
 
-        var heap = new PriorityQueue<(string from, string to), double>();
-
-        for (int i = 0; i < input.Count - 1; i++) // go up until 2nd last item
+        for (int idx = 0; idx < input.Count; idx++)
         {
-            string line1 = input[i].Trim();
-            string[] coord1 = line1.Split(",", StringSplitOptions.RemoveEmptyEntries);
-            double x1 = double.Parse(coord1[0]);
-            double y1 = double.Parse(coord1[1]);
-            double z1 = double.Parse(coord1[2]);
+            string line = input[idx].Trim();
+            string[] parts = line.Split(',', StringSplitOptions.RemoveEmptyEntries);
+            int x = int.Parse(parts[0]);
+            int y = int.Parse(parts[1]);
+            int z = int.Parse(parts[2]);
+            points.Add((x, y, z));
+        }
 
-            for (int j = i + 1; j < input.Count; j++)
+        int n = points.Count;
+
+        var heap = new PriorityQueue<(int i, int j), double>();
+
+        for (int i = 0; i < n - 1; i++) // go up until 2nd last item
+        {
+            (int x1, int y1, int z1) = points[i];
+            for (int j = i + 1; j < n; j++)
             {
-                string line2 = input[j].Trim();
-                string[] coord2 = line2.Split(",", StringSplitOptions.RemoveEmptyEntries);
-                double x2 = double.Parse(coord2[0]);
-                double y2 = double.Parse(coord2[1]);
-                double z2 = double.Parse(coord2[2]);
-
+                (int x2, int y2, int z2) = points[j];
                 double euclideanDistance = Math.Sqrt(Math.Pow(x2 - x1, 2) + Math.Pow(y2 - y1, 2) + Math.Pow(z2 - z1, 2));
 
-                heap.Enqueue((line1, line2), euclideanDistance);
+                heap.Enqueue((i, j), euclideanDistance);
             }
         }
 
         // step 2: Build graph from the shortest paths min heap
 
-        var graph = new Dictionary<string, List<string>>();
+        var graph = new Dictionary<int, List<int>>(n);
+        for (int i = 0; i < n; i++) graph[i] = [];
+
         int currentConnections = 0;
+        var added = new HashSet<(int i, int j)>();
 
         while (currentConnections < connections)
         {
-            (string from, string to) = heap.Dequeue();
+            (int i, int j) = heap.Dequeue();
+            if (!added.Add((i, j))) continue;
 
-            if (!graph.ContainsKey(from))
-                graph[from] = new List<string>();
-            if (!graph.ContainsKey(to))
-                graph[to] = new List<string>();
-
-            graph[from].Add(to);
-            graph[to].Add(from);
-
+            graph[i].Add(j);
+            graph[j].Add(i);
             currentConnections++;
         }
 
         // step 3: count connected components
 
-        var visited = new HashSet<string>();
+        var visited = new bool[n];
         var counts = new List<int>();
 
-        foreach (var node in graph)
+        for (int i = 0; i < n; i++)
         {
-            if (!visited.Contains(node.Key))
+            if (!visited[i])
             {
-                int count = DFSCount(node.Key, graph, visited);
+                int count = DFSCount(i, graph, visited);
                 counts.Add(count);
             }
         }
@@ -74,23 +75,23 @@ public class PartOne
         return result;
     }
 
-    private static int BFSCount(string node, Dictionary<string, List<string>> graph, HashSet<string> visited)
+    private static int BFSCount(int start, Dictionary<int, List<int>> graph, bool[] visited)
     {
         int count = 0;
-        var queue = new Queue<string>();
+        var queue = new Queue<int>();
 
-        visited.Add(node);
-        queue.Enqueue(node);
+        visited[start] = true;
+        queue.Enqueue(start);
 
         while (queue.Count > 0)
         {
-            string top = queue.Dequeue();
+            int top = queue.Dequeue();
             count++;
             foreach (var neighbor in graph[top])
             {
-                if (!visited.Contains(neighbor))
+                if (!visited[neighbor])
                 {
-                    visited.Add(neighbor);
+                    visited[neighbor] = true;
                     queue.Enqueue(neighbor);
                 }
             }
@@ -99,23 +100,23 @@ public class PartOne
         return count;
     }
 
-    private static int DFSCount(string node, Dictionary<string, List<string>> graph, HashSet<string> visited)
+    private static int DFSCount(int start, Dictionary<int, List<int>> graph, bool[] visited)
     {
         int count = 0;
-        var stack = new Stack<string>();
-        stack.Push(node);
-        visited.Add(node);
+        var stack = new Stack<int>();
+        stack.Push(start);
+        visited[start] = true;
 
         while (stack.Count > 0)
         {
-            string top = stack.Pop();
+            int top = stack.Pop();
             count++;
 
-            foreach (string neighbor in graph[top])
+            foreach (int neighbor in graph[top])
             {
-                if (!visited.Contains(neighbor))
+                if (!visited[neighbor])
                 {
-                    visited.Add(neighbor);
+                    visited[neighbor] = true;
                     stack.Push(neighbor);
                 }
             }
