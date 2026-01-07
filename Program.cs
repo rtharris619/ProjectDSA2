@@ -1,3 +1,4 @@
 ﻿using ProjectDSA2.AdventOfCode.TwentyTwentyFive.DayEight;
+using ProjectDSA2.Algomonster.DynamicProgramming;
 
-PartTwo.Driver();
+ClimbingStairs.Driver();
