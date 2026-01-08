@@ -32,9 +32,9 @@ public class ClimbingStairs
 
         for (int i = 2; i < n; i++)
         {
-            long next = first + second;
+            long third = first + second;
             first = second;
-            second = next;
+            second = third;
         }
 
         return second;
