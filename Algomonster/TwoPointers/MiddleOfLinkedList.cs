@@ -1,23 +1,9 @@
-﻿namespace ProjectDSA2.Algomonster.TwoPointers;
+﻿using static ProjectDSA2.Helpers.SinglyLinkedListHelper;
+
+namespace ProjectDSA2.Algomonster.TwoPointers;
 
 public class MiddleOfLinkedList
 {
-    public class Node<T>
-    {
-        public T val;
-        public Node<T> next;
-
-        public Node(T val)
-        {
-            this.val = val;
-        }
-
-        public Node(T val, Node<T> next)
-        {
-            this.val = val;
-            this.next = next;
-        }
-    }
 
     public static int Middle(Node<int> head)
     {
@@ -30,16 +16,6 @@ public class MiddleOfLinkedList
         }
 
         return left.val;
-    }
-
-    public static Node<int> BuildList(List<int> ints)
-    {
-        Node<int> node = null;
-        for (int i = ints.Count - 1; i >= 0; i--)
-        {
-            node = new Node<int>(ints[i], node);
-        }
-        return node;
     }
 
     public static void Driver()

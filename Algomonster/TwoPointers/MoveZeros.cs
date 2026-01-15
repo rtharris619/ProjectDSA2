@@ -1,6 +1,4 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace ProjectDSA2.Algomonster.TwoPointers;
+﻿namespace ProjectDSA2.Algomonster.TwoPointers;
 
 public class MoveZeros
 {
