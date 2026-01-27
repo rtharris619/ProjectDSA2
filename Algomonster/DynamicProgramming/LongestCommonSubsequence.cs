@@ -29,8 +29,8 @@ public class LongestCommonSubsequence
         if (i == 0 || j == 0)
             return 0;
         string key = $"{s1[i - 1]},{s2[j - 1]}";
-        if (memo.ContainsKey(key))
-            return memo[key];
+        if (memo.TryGetValue(key, out int value))
+            return value;
 
         int result;
         if (s1[i - 1] == s2[j - 1])
