@@ -45,14 +45,6 @@ public class LongestCommonSubsequence
     public static int LCS3(string word1, string word2)
     {
         int[,] dp = new int[word1.Length + 1, word2.Length + 1];
-        for (int i = 0; i <= word1.Length; i++)
-        {
-            dp[i, 0] = 0;
-        }
-        for (int j = 0; j <= word2.Length; j++)
-        {
-            dp[0, j] = 0;
-        }
         for (int i = 1; i <= word1.Length; i++)
         {
             for (int j = 1; j <= word2.Length; j++)
