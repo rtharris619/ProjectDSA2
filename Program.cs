@@ -2,4 +2,4 @@
 using ProjectDSA2.Algomonster.DynamicProgramming;
 using ProjectDSA2.Algomonster.TwoPointers;
 
-LongestIncreasingSubsequence.Driver();
+DivisorGame.Driver();
