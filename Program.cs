@@ -2,4 +2,4 @@
 using ProjectDSA2.Algomonster.DynamicProgramming;
 using ProjectDSA2.Algomonster.TwoPointers;
 
-TargetSum.Driver();
+CoinChange.Driver();
